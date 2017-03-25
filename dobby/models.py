@@ -23,9 +23,9 @@ class Rating(models.Model):
 	rating = models.IntegerField()
 
 class CompletedTransaction(models.Model):
-	teach = models.IntegerField()
-	learn = models.IntegerField()
-	topic = models.CharField(max_length=30)
+	teacherId = models.IntegerField()
+	learnerId = models.IntegerField()
+	skillID = models.CharField(max_length=30)
 	byTime = models.BooleanField()
 	value = models.IntegerField()
 
