@@ -12,7 +12,7 @@ class Login(models.Model):
 
 class User(models.Model):
 	userId = models.IntegerField(max_length=10, primary_key=True)
-	Name = models.CharField(max_length=40)
+	Name = models.CharField(max_length=40, default="")
 
 class Rating(models.Model):
 	userId = models.IntegerField(max_length=10)
