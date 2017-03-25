@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Skill, Login, User
+from .models import Skill, Login, User, Rating, Transaction
 
 admin.site.register(Skill)
 admin.site.register(Login)
