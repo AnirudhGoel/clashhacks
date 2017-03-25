@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dobby - Skill Barter</title>
+    <title>Dobby - Profile</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../static/dobby/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <link href="../../static/dobby/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="../../static/dobby/css/creative.min.css" rel="stylesheet">
+    <link href="../../static/dobby/css/creative2.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,7 +48,14 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{% static 'dobby/profile.html' %}">Profile</a>
+                    </li>
+                    <li>
+                        <a href="{% static 'dobby/home.html' %}">Home</a>
+                    </li>
+                </ul>
                 <!-- <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a class="page-scroll" href="#about">About</a>
@@ -63,7 +70,7 @@
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul> -->
-                      <form id="signin" class="navbar-form navbar-right" role="form">
+                      <!-- <form id="signin" class="navbar-form navbar-right" role="form">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address">                                        
@@ -76,7 +83,7 @@
 
                         <button type="submit" class="btn btn-primary">Login</button>
                         <button class="btn btn-primary">Register</button>
-                   </form>
+                   </form> -->
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -86,9 +93,8 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 id="homeHeading">Meet Dobby!</h1>
+                <h1 id="homeHeading">Profile here.</h1>
                 <hr>
-                <p>Description of Dobby.</p>
                 <!-- <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
             </div>
         </div>
