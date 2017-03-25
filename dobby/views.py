@@ -76,3 +76,32 @@ def compTransaction(request):
 
 def pendTransaction(request):
 	pass
+
+
+
+def pendingTeacher(request):
+	userId = request.GET['userId']
+	response = {}
+
+	if PendingTransaction.objects.filter(teacherId = userId).count() != 0:
+		q = PendingTransaction.objects.filter(teacherId = userId).values()
+		for x in range(0,q.count()):
+			learnerId = q[x]["learnerId"]
+			skillId = q[x]["skillId"]
+
+			p = User.objects.get(userId = learnerId)
+			r = Skill.objects.get(skillId = skillId)
+
+			response[x] = {}
+			response[x]["learnerName"] = p.name
+			response[x]["location"] = p.location
+			response[x]["mobile"] = p.mobile
+			response[x]["skillName"] = r.skillName
+		return HttpResponse(json.dumps({"response": response}), content_type = "application/json")
+	else:
+		return HttpResponse(json.dumps({"response": "None"}), content_type = "application/json")
+
+
+def search(request):
+	context = ""
+	return render(request, 'dobby/search.html', context)

@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Skill(models.Model):
-	skillID = models.IntegerField(primary_key=True)
+	skillId = models.IntegerField(primary_key=True)
 	skillName = models.CharField(max_length=40, default="")
 
 class Login(models.Model):
@@ -30,6 +30,11 @@ class CompletedTransaction(models.Model):
 	value = models.IntegerField()
 
 class PendingTransaction(models.Model):
+	teacherId = models.IntegerField()
+	learnerId = models.IntegerField()
+	skillId = models.IntegerField()
+
+class OngoingTransaction(models.Model):
 	teacherId = models.IntegerField()
 	learnerId = models.IntegerField()
 	skillId = models.IntegerField()

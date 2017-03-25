@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +41,12 @@
             height: 700px;
         }
         .c{
-            height: 300px;
+            /*height: 300px;*/
+        }
+        .pendbox {
+            margin: 15px 20px 15px 20px; 
+            padding: 5px 10px 5px 10px;
+            border: black solid 1px;
         }
     </style>
     <!-- <script src="//cdn.letreach.com/js/main/aed35844ea2c18a44177834b4207067b.js"></script> -->
@@ -64,10 +70,16 @@
 
 <div class="contents">
     <br><br><br><br><br><br><br><br><br><br>
+    <input type="text" id="userId" value={{userId}} hidden>
     <div class="c">PENDING TRANSACTION</div>
+    <div id="pendTran"></div>
+    <div class="c">ONGOING TRANSACTION</div>
+    <div id="onTran"></div>
     <div class="c">COMPLETED TRANSACTION</div>
-    <div class="c">MY INTERESTS</div>
+    <div id="compTran"></div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'dobby/js/home.js' %}"></script>
 </body>
 </html>

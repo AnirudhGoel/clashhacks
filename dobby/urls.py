@@ -11,6 +11,6 @@ urlpatterns = [
 	url(r'^rating/', views.rating, name='rating'),
 	url(r'^compTransaction/', views.compTransaction, name='compTransaction'),
 	url(r'^pendTransaction/', views.pendTransaction, name='pendTransaction'),
-	# url(r'^updateGoogleId/', views.updateGoogleId, name='updateGoogleId'),
-	# url(r'^googleIdExistsInDB/', views.googleIdExistsInDB, name='googleIdExistsInDB'),
+	url(r'^pendingTeacher/', views.pendingTeacher, name='pendingTeacher'),
+	url(r'^search/', views.search, name='search'),
 ]
