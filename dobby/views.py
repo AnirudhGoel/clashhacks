@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 import json
 
-from .models import Skill, Login, Rating, User, Transaction
+from .models import Skill, Login, Rating, User, CompletedTransaction, PendingTransaction
 
 
 
@@ -11,8 +11,21 @@ def index(request):
 	context = ""
 	return render(request, 'dobby/index.html', context)
 
-def home(request):
-	context = ""
+def home(request, userId):
+	q = User.objects.get(userId = userId)
+	name = q.name
+	status = q.status
+	location = q.location
+
+	q = Login.objects.get(userId = userId)
+	username = q.username
+	context = {
+		'userId': userId,
+		'name': name,
+		'username': username,
+		'status': status,
+		'location': location,
+	}
 	return render(request, 'dobby/home.html', context)
 
 def profile(request):
@@ -26,7 +39,7 @@ def login(request):
 	try:
 		q = Login.objects.get(username = username)
 		if q.password == password:
-			return HttpResponse(json.dumps({"response": "valid"}), content_type = "application/json")
+			return HttpResponse(json.dumps({"response": "valid", "userId": q.userId}), content_type = "application/json")
 		else:
 			return HttpResponse(json.dumps({"response": "invalid", "message": "Invalid Password"}), content_type = "application/json")
 	except Login.DoesNotExist:
@@ -46,7 +59,7 @@ def rating(request):
 
 	return HttpResponse(json.dumps({"response": result, "message": "Error saving data"}), content_type = "application/json")
 
-def transaction(request):
+def compTransaction(request):
 	teach = request.GET['teach']
 	learn = request.GET['learn']
 	byTime = request.GET['byTime']
@@ -60,3 +73,6 @@ def transaction(request):
 		result = "unsuccess: " + e
 
 	return HttpResponse(json.dumps({"response": result, "message": "Error saving data"}), content_type = "application/json")
+
+def pendTransaction(request):
+	pass

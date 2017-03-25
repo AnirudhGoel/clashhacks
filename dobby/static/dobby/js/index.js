@@ -5,7 +5,7 @@ function login(event) {
 	var password = $("#password").val();
 	$.getJSON("login/", {username: username, password: password}, function(data) {
 		if (data.response == "valid") {
-			window.location = "http://localhost:8000/dobby/home";
+			window.location = "http://localhost:8000/dobby/home/" + data.userId;
 		} else {
 			console.log(data.response, data.message);
 		}
