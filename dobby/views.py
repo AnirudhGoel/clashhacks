@@ -3,13 +3,21 @@ from django.http import HttpResponse
 from django.utils import timezone
 import json
 
-# from .models import Calender
+from .models import Skill, Login, Rating, User, Transaction
 
 
 
 def index(request):
 	context = ""
 	return render(request, 'dobby/index.html', context)
+
+def home(request):
+	context = ""
+	return render(request, 'dobby/home.html', context)
+
+def profile(request):
+	context = ""
+	return render(request, 'dobby/profile.html', context)
 
 def login(request):
 	username = request.GET['username']
