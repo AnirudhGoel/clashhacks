@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title>Anime Genre</title>
+    <title>Search Interests</title>
     <style>
         .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
         .autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
@@ -67,10 +67,17 @@
         #autocomplete:focus {
             background-image: url("public/img/index.png");
         }
+        .box {
+            width: 350px;
+            text-align: center;
+            border: 2px solid black;
+            margin: 20px 0px 20px 0px;
+            padding: 20px 15px 20px 15px;
+        }
     </style>
 
 </head>
-<body>
+<body onkeydown="checkEnter(event);">
 <div id="g1">
     <div style="float: left; margin-left: 20%;">SEARCH INTERESTS</div>
 </div>
@@ -80,7 +87,7 @@
     </div>
     <br>
     <br>
-    <div id="outputbox">
+    <div id="outputbox" align="center">
         <p id="outputcontent"></p>
     </div>
 </div>
@@ -90,6 +97,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{% static 'dobby/js/jquery.autocomplete.min.js' %}"></script>
 <script>
+
     $(function(){
         var anime = [
             'Swimming',
@@ -103,15 +111,20 @@
         $('#autocomplete').autocomplete({
             lookup: anime,
             onSelect: function (suggestion) {
-                // var thehtml = '<center><strong style="font-size: 17px; color: lightsalmon">Genre:</strong>'
-                    // +'<a href="#'+ $('#autocomplete').val()+'">'+$('#autocomplete').val()+'</a></center>';
 
-                $.getJSON("")
+                $.getJSON("/dobby/showSearch/", {skillName: $("#autocomplete").val()}, function(data) {
+                    resp = data.response;
+                    var thehtml = "";
+                    for (var i = 0; i < Object.keys(resp).length; i++) {
+                        thehtml += "<div class='box'>" + resp[i]['name'] + "<br>" + resp[i]['location'] + "</div>"
+                    }
+                    $('#outputcontent').html(thehtml);
 
-                $('#outputcontent').html(thehtml);
+                });
+
             }
         });
-    })
+    });
 </script>
 
 </body>

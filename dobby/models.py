@@ -19,12 +19,12 @@ class User(models.Model):
 
 class UserSkill(models.Model):
 	userId = models.IntegerField()
-	skillID = models.IntegerField()
+	skillId = models.IntegerField()
 
 class CompletedTransaction(models.Model):
 	teacherId = models.IntegerField()
 	learnerId = models.IntegerField()
-	skillID = models.CharField(max_length=30)
+	skillId = models.CharField(max_length=30)
 	byTime = models.BooleanField()
 	value = models.IntegerField()
 

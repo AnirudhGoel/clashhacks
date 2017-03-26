@@ -108,6 +108,18 @@ def search(request):
 
 def showSearch(request):
 	skillName = request.GET['skillName']
+	response = {}
+
 	q = Skill.objects.get(skillName = skillName)
 	skillId = q.skillId
 
+	q = UserSkill.objects.filter(skillId = skillId).values()
+	for x in range(0,q.count()):
+		userId = q[x]["userId"]
+
+		p = User.objects.get(userId = userId)
+
+		response[x] = {}
+		response[x]["name"] = p.name
+		response[x]["location"] = p.location
+	return HttpResponse(json.dumps({"response": response}), content_type = "application/json")
