@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
         body {margin:0;}
         .header{
@@ -17,13 +18,14 @@
             position: fixed;
             top: 0;
             background-color: white;
+            z-index: 9999;
             width: 100%;
         }
         .propic{
             height: 200px;
             width: 22%;
             position: fixed;
-            margin-top: 200px;
+            margin-top: 150px;
         }
         img{
             margin-left: 30px;
@@ -52,24 +54,43 @@
             margin-bottom: 40px;
             padding: 10px;
             padding-top: 20px;
+            display: flex;
+            flex-direction: row;
         }
         .c:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
         .circle{
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             border-radius: 100%;
             border: outset;
             border-color: #0b0b0b;
             border-width: 1px;
-            margin: 25px;
+            padding: 70px 0px 5px 20px;
+            margin: 0px 10px 0px 10px;
             background-color: rgba(0,0,0,0.2);
 
         }
         .circle:hover{
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
             /*height: 300px;*/
+        }
+        .circon {
+            width: 80%;
+            font: 15px EuropaRegular,sans-serif;
+            letter-spacing: .35em;
+            font-weight: lighter;
+            padding-bottom: 5px;
+            padding-left: 20px;
+        }
+        .sear {
+            background-color: lightgreen;
+            /*color: white;*/
+            margin-left: 100px;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
         }
     </style>
     <script src="//cdn.letreach.com/js/main/aed35844ea2c18a44177834b4207067b.js"></script>
@@ -79,36 +100,43 @@
     <hr></div>
 
 <div class="propic">
-    <img src="hen.jpg">
+    <img src="{% static 'dobby/img/dp.png' %}">
+    <br><br>
     <div class="profile">
-    USERNAME
+    {{name}}
     <br>
-    HandleName
+    {{username}}
     <br>
     <br>
-    Status
+    {{status}}
     <hr>
-    Location
+    {{location}}
     <br>
-    Mail ID
     </div>
+    <button class="sear">SEARCH</button>
 </div>
 
 <div class="contents">
     <br><br><br><br><br><br><br><br><br><br><br>
     <input type="text" id="userId" value={{userId}} hidden>
-    <div class="c" style="background-color: #e1fcff"><center>PENDING TRANSACTION</center>
+    <span class="circon">PENDING TRANSACTION</span>
+    <div class="c" style="background-color: #e1fcff">
         <div id="pendTran"></div>
     </div>
-    <div class="c" style="background-color: #ffd4fb"><center>ONGOING TRANSACTION</center>
+
+    <span class="circon">ONGOING TRANSACTION</span>
+    <div class="c" style="background-color: #ffd4fb">
         <div id="onTran"></div>
     </div>
-    <div class="c" style="background-color: #e2ffc5"><center>COMPLETED TRANSACTION</center>
+
+    <span class="circon">COMPLETED TRANSACTION</span>
+    <div class="c" style="background-color: #e2ffc5">
         <div id="compTran"></div>
     </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="{% static 'dobby/js/home.js' %}"></script>
 </body>
 </html>

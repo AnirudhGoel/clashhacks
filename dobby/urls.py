@@ -9,9 +9,9 @@ urlpatterns = [
 	url(r'^profile/', views.profile, name='profile'),
 	url(r'^login/', views.login, name='login'),
 	url(r'^rating/', views.rating, name='rating'),
-	url(r'^compTransaction/', views.compTransaction, name='compTransaction'),
-	url(r'^pendTransaction/', views.pendTransaction, name='pendTransaction'),
+	url(r'^compTrans/', views.compTrans, name='compTrans'),
 	url(r'^pendingTeacher/', views.pendingTeacher, name='pendingTeacher'),
+	url(r'^ongTrans/', views.ongTrans, name='ongTrans'),
 	url(r'^search/', views.search, name='search'),
 	url(r'^showSearch/', views.showSearch, name='showSearch'),
 ]

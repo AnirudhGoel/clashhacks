@@ -22,6 +22,7 @@ class UserSkill(models.Model):
 	skillId = models.IntegerField()
 
 class CompletedTransaction(models.Model):
+	compId = models.AutoField(primary_key=True)
 	teacherId = models.IntegerField()
 	learnerId = models.IntegerField()
 	skillId = models.CharField(max_length=30)
@@ -29,11 +30,13 @@ class CompletedTransaction(models.Model):
 	value = models.IntegerField()
 
 class PendingTransaction(models.Model):
+	transId = models.AutoField(primary_key=True)
 	teacherId = models.IntegerField()
 	learnerId = models.IntegerField()
 	skillId = models.IntegerField()
 
 class OngoingTransaction(models.Model):
+	ongId = models.AutoField(primary_key=True)
 	teacherId = models.IntegerField()
 	learnerId = models.IntegerField()
 	skillId = models.IntegerField()

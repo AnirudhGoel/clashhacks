@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 import json
 
-from .models import Skill, Login, UserSkill, User, CompletedTransaction, PendingTransaction
+from .models import Skill, Login, UserSkill, User, CompletedTransaction, PendingTransaction, OngoingTransaction
 
 
 
@@ -59,25 +59,6 @@ def rating(request):
 
 	return HttpResponse(json.dumps({"response": result, "message": "Error saving data"}), content_type = "application/json")
 
-def compTransaction(request):
-	teach = request.GET['teach']
-	learn = request.GET['learn']
-	byTime = request.GET['byTime']
-	value = request.GET['value']
-
-	q = Rating(teach = teach, learn = learn, byTime = byTime, value = value)
-	try:
-		q.save()
-		result = "success"
-	except Exception as e:
-		result = "unsuccess: " + e
-
-	return HttpResponse(json.dumps({"response": result, "message": "Error saving data"}), content_type = "application/json")
-
-def pendTransaction(request):
-	pass
-
-
 
 def pendingTeacher(request):
 	userId = request.GET['userId']
@@ -93,10 +74,66 @@ def pendingTeacher(request):
 			r = Skill.objects.get(skillId = skillId)
 
 			response[x] = {}
+			response[x]["transId"] = q[x]["transId"]
 			response[x]["learnerName"] = p.name
 			response[x]["location"] = p.location
 			response[x]["mobile"] = p.mobile
 			response[x]["skillName"] = r.skillName
+		return HttpResponse(json.dumps({"response": response}), content_type = "application/json")
+	else:
+		return HttpResponse(json.dumps({"response": "None"}), content_type = "application/json")
+
+
+def ongTrans(request):
+	userId = request.GET['userId']
+	response = {}
+
+	if OngoingTransaction.objects.filter(teacherId = userId).count() != 0:
+		q = OngoingTransaction.objects.filter(teacherId = userId).values()
+		for x in range(0,q.count()):
+			learnerId = q[x]["learnerId"]
+			skillId = q[x]["skillId"]
+
+			p = User.objects.get(userId = learnerId)
+			r = Skill.objects.get(skillId = skillId)
+
+			response[x] = {}
+			response[x]["ongId"] = q[x]["ongId"]
+			response[x]["learnerName"] = p.name
+			response[x]["location"] = p.location
+			response[x]["mobile"] = p.mobile
+			response[x]["skillName"] = r.skillName
+		return HttpResponse(json.dumps({"response": response}), content_type = "application/json")
+	else:
+		return HttpResponse(json.dumps({"response": "None"}), content_type = "application/json")
+
+def compTrans(request):
+	userId = request.GET['userId']
+	response = {}
+
+	if CompletedTransaction.objects.filter(teacherId = userId).count() != 0:
+		q = CompletedTransaction.objects.filter(teacherId = userId).values()
+		for x in range(0,q.count()):
+			learnerId = q[x]["learnerId"]
+			skillId = q[x]["skillId"]
+			byTime = q[x]["byTime"]
+			value = q[x]["value"]
+
+			if byTime == 0:
+				spent = "Rs. " + value
+			else:
+				spent = str(value) + "Hours"
+
+			p = User.objects.get(userId = learnerId)
+			r = Skill.objects.get(skillId = skillId)
+
+			response[x] = {}
+			response[x]["compId"] = q[x]["compId"]
+			response[x]["learnerName"] = p.name
+			response[x]["location"] = p.location
+			response[x]["mobile"] = p.mobile
+			response[x]["skillName"] = r.skillName
+			response[x]["spent"] = spent
 		return HttpResponse(json.dumps({"response": response}), content_type = "application/json")
 	else:
 		return HttpResponse(json.dumps({"response": "None"}), content_type = "application/json")
