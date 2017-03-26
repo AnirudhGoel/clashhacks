@@ -74,14 +74,22 @@
             margin: 20px 0px 20px 0px;
             padding: 20px 15px 20px 15px;
         }
+        button {
+            background-color: #c9302c;
+            color: white;
+            width: 150px;
+            height: 40px;
+            border: none;
+        }
     </style>
 
 </head>
-<body onkeydown="checkEnter(event);">
+<body>
 <div id="g1">
     <div style="float: left; margin-left: 20%;">SEARCH INTERESTS</div>
 </div>
 <div id="content">
+    <input type="text" value={{userId}} id="userId" hidden>
     <div id="searchfield">
         <form class="go"><input name="anime" id="autocomplete" type="text" class="biginput"></form>
     </div>
@@ -116,7 +124,9 @@
                     resp = data.response;
                     var thehtml = "";
                     for (var i = 0; i < Object.keys(resp).length; i++) {
-                        thehtml += "<div class='box'>" + resp[i]['name'] + "<br>" + resp[i]['location'] + "</div>"
+                        if (resp[i]['userId'] != $("#userId").val()) {
+                            thehtml += "<div class='box'>" + resp[i]['name'] + "<br>" + resp[i]['location'] + "<br><br><button class='addToPend' id='" + resp[i]['userId'] + "' onclick='addToPending(event);'>Request to Teach</button></div>";
+                        }
                     }
                     $('#outputcontent').html(thehtml);
 
@@ -125,6 +135,14 @@
             }
         });
     });
+
+    function addToPending(event) {
+        console.log(event.target.id);
+        $.getJSON("/dobby/addToPending", {skillName: $("#autocomplete").val(), teacherId: event.target.id, learnerId: $("#userId").val()}, function(data) {
+            console.log(data);
+            $("#"+event.target.id).fadeOut();
+        });
+    }
 </script>
 
 </body>

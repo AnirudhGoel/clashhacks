@@ -139,8 +139,10 @@ def compTrans(request):
 		return HttpResponse(json.dumps({"response": "None"}), content_type = "application/json")
 
 
-def search(request):
-	context = ""
+def search(request, userId):
+	context = {
+		'userId': userId,
+	}
 	return render(request, 'dobby/search.html', context)
 
 def showSearch(request):
@@ -159,6 +161,7 @@ def showSearch(request):
 		response[x] = {}
 		response[x]["name"] = p.name
 		response[x]["location"] = p.location
+		response[x]["userId"] = userId
 	return HttpResponse(json.dumps({"response": response}), content_type = "application/json")
 
 
@@ -196,5 +199,18 @@ def ongoingToComplete(request):
 	p = CompletedTransaction(teacherId = teacherId, learnerId = learnerId, skillId = skillId, byTime = byTime, value = value)
 	p.save()
 	OngoingTransaction.objects.filter(ongId = ongId).delete()
+
+	return HttpResponse(json.dumps({"response": "success"}), content_type = "application/json")
+
+def addToPending(request):
+	skillName = request.GET['skillName']
+	learnerId = request.GET['learnerId']
+	teacherId = request.GET['teacherId']
+
+	q = Skill.objects.get(skillName = skillName)
+	skillId = q.skillId
+
+	p = PendingTransaction(teacherId = teacherId, learnerId = learnerId, skillId = skillId)
+	p.save()
 
 	return HttpResponse(json.dumps({"response": "success"}), content_type = "application/json")

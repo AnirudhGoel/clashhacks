@@ -12,9 +12,10 @@ urlpatterns = [
 	url(r'^compTrans/', views.compTrans, name='compTrans'),
 	url(r'^pendingTeacher/', views.pendingTeacher, name='pendingTeacher'),
 	url(r'^ongTrans/', views.ongTrans, name='ongTrans'),
-	url(r'^search/', views.search, name='search'),
+	url(r'^search/(?P<userId>[0-9]+)/', views.search, name='search'),
 	url(r'^showSearch/', views.showSearch, name='showSearch'),
 	url(r'^pendingToOngoing/', views.pendingToOngoing, name='pendingToOngoing'),
 	url(r'^pendingToReject/', views.pendingToReject, name='pendingToReject'),
 	url(r'^ongoingToComplete/', views.ongoingToComplete, name='ongoingToComplete'),
+	url(r'^addToPending/', views.addToPending, name='addToPending'),
 ]

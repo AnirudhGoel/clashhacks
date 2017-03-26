@@ -39,6 +39,8 @@ $(document).ready(function() {
 
 		}
 	});
+
+	$('#search').attr('href','/dobby/search/' + userId);
 });
 
 // Buttons
