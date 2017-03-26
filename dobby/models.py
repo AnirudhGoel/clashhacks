@@ -17,10 +17,9 @@ class User(models.Model):
 	location = models.CharField(max_length=40, default="")
 	mobile = models.BigIntegerField()
 
-class Rating(models.Model):
+class UserSkill(models.Model):
 	userId = models.IntegerField()
 	skillID = models.IntegerField()
-	rating = models.IntegerField()
 
 class CompletedTransaction(models.Model):
 	teacherId = models.IntegerField()

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 import json
 
-from .models import Skill, Login, Rating, User, CompletedTransaction, PendingTransaction
+from .models import Skill, Login, UserSkill, User, CompletedTransaction, PendingTransaction
 
 
 
@@ -105,3 +105,9 @@ def pendingTeacher(request):
 def search(request):
 	context = ""
 	return render(request, 'dobby/search.html', context)
+
+def showSearch(request):
+	skillName = request.GET['skillName']
+	q = Skill.objects.get(skillName = skillName)
+	skillId = q.skillId
+

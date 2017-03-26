@@ -1,12 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>Anime Genre</title>
-    <link rel="stylesheet" type="text/css" media="all" href="style.css">
-    <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="jquery.autocomplete.min.js"></script>
-    <!--<link rel="stylesheet" type="text/css" media="all" href="public/gnre.css">-->
     <style>
         .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
         .autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
@@ -81,6 +78,8 @@
     <div id="searchfield">
         <form class="go"><input name="anime" id="autocomplete" type="text" class="biginput"></form>
     </div>
+    <br>
+    <br>
     <div id="outputbox">
         <p id="outputcontent"></p>
     </div>
@@ -88,22 +87,27 @@
 
 
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'dobby/js/jquery.autocomplete.min.js' %}"></script>
 <script>
     $(function(){
         var anime = [
             'Swimming',
             'Painting',
             'Coding',
-            'cooking',
-            'Guitar'
-
+            'Cooking',
+            'Guitar',
+            'Keyboard',
+            'Singing'
         ];
         $('#autocomplete').autocomplete({
             lookup: anime,
             onSelect: function (suggestion) {
-                var thehtml = '<center><strong style="font-size: 17px; color: lightsalmon">Genre:</strong>'
-                    +'<a href="#'+ $('#autocomplete').val()+'">'+$('#autocomplete').val()+'</a></center>';
+                // var thehtml = '<center><strong style="font-size: 17px; color: lightsalmon">Genre:</strong>'
+                    // +'<a href="#'+ $('#autocomplete').val()+'">'+$('#autocomplete').val()+'</a></center>';
+
+                $.getJSON("")
+
                 $('#outputcontent').html(thehtml);
             }
         });

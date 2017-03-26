@@ -13,4 +13,5 @@ urlpatterns = [
 	url(r'^pendTransaction/', views.pendTransaction, name='pendTransaction'),
 	url(r'^pendingTeacher/', views.pendingTeacher, name='pendingTeacher'),
 	url(r'^search/', views.search, name='search'),
+	url(r'^showSearch/', views.showSearch, name='showSearch'),
 ]
