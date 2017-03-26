@@ -160,3 +160,41 @@ def showSearch(request):
 		response[x]["name"] = p.name
 		response[x]["location"] = p.location
 	return HttpResponse(json.dumps({"response": response}), content_type = "application/json")
+
+
+def pendingToOngoing(request):
+	transId = request.GET['transId']
+
+	q = PendingTransaction.objects.get(transId = transId)
+	teacherId = q.teacherId
+	learnerId = q.learnerId
+	skillId = q.skillId
+
+	p = OngoingTransaction(teacherId = teacherId, learnerId = learnerId, skillId = skillId)
+	p.save()
+	PendingTransaction.objects.filter(transId = transId).delete()
+
+	return HttpResponse(json.dumps({"response": "success"}), content_type = "application/json")
+
+def pendingToReject(request):
+	transId = request.GET['transId']
+
+	PendingTransaction.objects.filter(transId = transId).delete()
+
+	return HttpResponse(json.dumps({"response": "success"}), content_type = "application/json")
+
+def ongoingToComplete(request):
+	ongId = request.GET['ongId']
+	byTime = request.GET['byTime']
+	value = request.GET['value']
+
+	q = OngoingTransaction.objects.get(ongId = ongId)
+	teacherId = q.teacherId
+	learnerId = q.learnerId
+	skillId = q.skillId
+
+	p = CompletedTransaction(teacherId = teacherId, learnerId = learnerId, skillId = skillId, byTime = byTime, value = value)
+	p.save()
+	OngoingTransaction.objects.filter(ongId = ongId).delete()
+
+	return HttpResponse(json.dumps({"response": "success"}), content_type = "application/json")

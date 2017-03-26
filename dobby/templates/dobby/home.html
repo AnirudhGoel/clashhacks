@@ -61,13 +61,14 @@
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
         .circle{
+            text-align: center;
             width: 250px;
             height: 250px;
             border-radius: 100%;
             border: outset;
             border-color: #0b0b0b;
             border-width: 1px;
-            padding: 70px 0px 5px 20px;
+            padding: 75px 0px 5px 10px;
             margin: 0px 10px 0px 10px;
             background-color: rgba(0,0,0,0.2);
 
@@ -92,8 +93,11 @@
             height: 100px;
             border-radius: 100%;
         }
+        .text {
+            width: 50px;
+        }
     </style>
-    <script src="//cdn.letreach.com/js/main/aed35844ea2c18a44177834b4207067b.js"></script>
+    <!-- <script src="//cdn.letreach.com/js/main/aed35844ea2c18a44177834b4207067b.js"></script> -->
 </head>
 <body>
 <div class="header"><center>DOBBY</center>
@@ -120,17 +124,17 @@
     <br><br><br><br><br><br><br><br><br><br><br>
     <input type="text" id="userId" value={{userId}} hidden>
     <span class="circon">PENDING TRANSACTION</span>
-    <div class="c" style="background-color: #e1fcff">
+    <div class="c" style="background-color: #e1fcff" id="pendin">
         <div id="pendTran"></div>
     </div>
 
     <span class="circon">ONGOING TRANSACTION</span>
-    <div class="c" style="background-color: #ffd4fb">
+    <div class="c" style="background-color: #ffd4fb" id="ongoin">
         <div id="onTran"></div>
     </div>
 
     <span class="circon">COMPLETED TRANSACTION</span>
-    <div class="c" style="background-color: #e2ffc5">
+    <div class="c" style="background-color: #e2ffc5" id="complet">
         <div id="compTran"></div>
     </div>
 </div>
