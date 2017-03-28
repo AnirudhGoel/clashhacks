@@ -120,9 +120,9 @@ def compTrans(request):
 			value = q[x]["value"]
 
 			if byTime == 0:
-				spent = "Rs. " + value
+				spent = "Rs. " + str(value)
 			else:
-				spent = str(value) + "Hours"
+				spent = str(value) + " Hours"
 
 			p = User.objects.get(userId = learnerId)
 			r = Skill.objects.get(skillId = skillId)

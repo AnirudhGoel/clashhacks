@@ -5,33 +5,74 @@
     <meta charset="UTF-8">
     <title>Dobby</title>
     <style>
+    @import 'https://fonts.googleapis.com/css?family=Lato:300,400';
+        body {
+            font-family: 'Lato', sans-serif;
+        }
         .do{
             padding-top: 220px;
             padding-left: 30vw;
-            font: 90px EuropaRegular,sans-serif;
+            /*font: 90px EuropaRegular,sans-serif;*/
+            font-size: 90px;
             letter-spacing: .65em;
             font-weight: lighter;
         }
         .sdo{
-            font: 30px EuropaRegular,sans-serif;
-            letter-spacing: .65em;
-            margin-left: 50px;
+            /*font: 30px EuropaRegular,sans-serif;*/
+            font-size: 30px;
+            letter-spacing: .35em;
+            margin-left: 45px;
         }
         .top{
-            float: right;
-            font: 20px EuropaRegular,sans-serif;
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            text-align: right;
+            padding: 15px 5px 15px 10px;
+            font-size: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            /*font: 20px EuropaRegular,sans-serif;*/
         }
         button{
             background-color: Transparent;
             background-repeat:no-repeat;
-            border: none;
+            border: black 1px solid;
+            color: black;
             cursor:pointer;
             overflow: hidden;
-            font: 20px EuropaRegular,sans-serif;
+            font-size: 20px;
+            /*font: 20px EuropaRegular,sans-serif;*/
+        }
+        .c {
+            margin-right: 30px;
+        }
+        video { 
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+            background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+            background-size: cover;
+            transition: 1s opacity;
+        }
+        .stopfade { 
+            opacity: .5;
         }
     </style>
 </head>
 <body>
+<video poster="{% static 'dobby/img/back.png' %}" id="bgvid" playsinline autoplay muted loop>
+  <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+<source src="{% static 'dobby/mp4/back.mp4' %}" type="video/mp4">
+<!-- <source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4"> -->
+</video>
 <div class="top">
     <input type="text" placeholder="Username" class="cd" id="username">
     <span style="display:inline-block; width: 10px;"></span>
@@ -39,7 +80,7 @@
     <span style="display:inline-block; width: 10px;"></span>
     <button onclick="login(event);">Sign In</button>
     <span style="display:inline-block; width: 10px;"></span>
-    <span class="c">Sign Up </span>
+    <button class="c">Sign Up </button>
 </div>
 <div class="do">DOBBY</div>
 <br>

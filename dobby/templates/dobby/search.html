@@ -125,7 +125,7 @@
                     var thehtml = "";
                     for (var i = 0; i < Object.keys(resp).length; i++) {
                         if (resp[i]['userId'] != $("#userId").val()) {
-                            thehtml += "<div class='box'>" + resp[i]['name'] + "<br>" + resp[i]['location'] + "<br><br><button class='addToPend' id='" + resp[i]['userId'] + "' onclick='addToPending(event);'>Request to Teach</button></div>";
+                            thehtml += "<div class='box'>" + resp[i]['name'] + "<br>" + resp[i]['location'] + "<br><br><button class='addToPend' id='" + resp[i]['userId'] + "' onclick='addToPending(event);'>Request to Learn</button></div>";
                         }
                     }
                     $('#outputcontent').html(thehtml);
