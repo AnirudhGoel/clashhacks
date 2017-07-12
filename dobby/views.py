@@ -8,7 +8,7 @@ from .models import Skill, Login, UserSkill, User, CompletedTransaction, Pending
 
 
 def index(request):
-	context = ""
+	context = {}
 	return render(request, 'dobby/index.html', context)
 
 def home(request, userId):
