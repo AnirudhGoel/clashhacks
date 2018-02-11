@@ -2,71 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="author" content="Anirudh Goel" />
+
     <title>Dobby</title>
-    <style>
-        body {margin:0;}
-        .header{
-            overflow: hidden;
-            font: 70px EuropaRegular,sans-serif;
-            letter-spacing: .65em;
-            font-weight: lighter;
-            padding-top: 4%;
-            position: fixed;
-            top: 0;
-            background-color: white;
-            width: 100%;
-        }
-        .propic{
-            height: 200px;
-            width: 22%;
-            position: fixed;
-            margin-top: 200px;
-        }
-        img{
-            margin-left: 30px;
-            margin-top: 15px;
-        }
-        .profile{
-            margin-left: 35px;
-            font: 15px EuropaRegular,sans-serif;
-            letter-spacing: .35em;
-            font-weight: lighter;
-        }
-        .contents{
-            /*display: block;*/
-            float: right;
-            width: 77.5%;
-            height: 700px;
-        }
-        .c{
-            font: 25px EuropaRegular,sans-serif;
-            letter-spacing: .35em;
-            font-weight: lighter;
-            /*height: 300px;*/
-            background-color: ;
-        }
-        .interests{
-            font: 20px EuropaRegular,sans-serif;
-            letter-spacing: .35em;
-            font-weight: lighter;
-            padding-left: 50px;
-            padding-top: 50px;
-            background-color: ;
-        }
-        button{
-            background-color: Transparent;
-            background-repeat:no-repeat;
-            border: inset;
-            cursor:pointer;
-            overflow: hidden;
-            font: 20px EuropaRegular,sans-serif;
-        }
-        .in{
-            width: 700px;
-            height: 32px
-        }
-    </style>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'dobby/css/profile.css' %}" />
+    <link rel="shortcut icon" href="{% static 'dobby/favicon.png' %}" />
 </head>
 <body>
 <div class="header"><center>EDIT PROFILE</center>

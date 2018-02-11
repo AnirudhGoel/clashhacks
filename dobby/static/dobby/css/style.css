@@ -1,0 +1,53 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+.do{
+	padding-top: 220px;
+	padding-left: 30vw;
+	font-size: 90px;
+	font-weight: lighter;
+}
+.sdo{
+	font-size: 30px;
+	margin-left: 45px;
+}
+.top{
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	text-align: right;
+	padding: 15px 5px 15px 10px;
+	font-size: 20px;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+button{
+	background-color: Transparent;
+	background-repeat:no-repeat;
+	border: black 1px solid;
+	color: black;
+	cursor:pointer;
+	overflow: hidden;
+	font-size: 20px;
+}
+.c {
+	margin-right: 30px;
+}
+video { 
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	transform: translateX(-50%) translateY(-50%);
+	background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+	background-size: cover;
+	transition: 1s opacity;
+}
+.stopfade { 
+	opacity: .5;
+}
